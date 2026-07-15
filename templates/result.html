@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prediction Result</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
+
+    background-image: url("https://tse3.mm.bing.net/th/id/OIP.uHlaG4u7g6nGoNf02BVpAwHaEj?w=2000&h=1230&rs=1&pid=ImgDetMain&o=7&rm=3");
+    background-size: cover;
+    background-position: center;
+}
+
+/* RESULT BOX */
+
+.result-box{
+    width:550px;
+    padding:35px;
+    margin:80px auto;
+
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(6px);
+
+    border-radius:12px;
+    box-shadow:0px 8px 25px rgba(0,0,0,0.3);
+}
+
+/* TITLE */
+
+h2{
+    text-align:center;
+    color:#222;
+}
+
+/* TEXT */
+
+h3{
+    color:#333;
+    margin-top:15px;
+}
+
+p{
+    font-size:16px;
+    color:#444;
+}
+
+/* GRAPH SECTION */
+
+#graphSection{
+    display:none;
+    margin-top:15px;
+}
+
+img{
+    border-radius:10px;
+}
+
+/* BUTTON */
+
+button{
+    width:100%;
+    padding:10px;
+    background:#007BFF;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+a{
+    display:block;
+    text-align:center;
+    margin-top:25px;
+    text-decoration:none;
+
+    background:#28a745;
+    color:white;
+    padding:12px;
+    border-radius:6px;
+}
+
+a:hover{
+    background:#1e7e34;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="result-box">
+
+<!-- 👤 USER DETAILS -->
+
+<h2>Welcome {{name}}</h2>
+<p><b>Department:</b> {{dept}}</p>
+
+<hr>
+
+<!-- 📚 STUDY RECOMMENDATION -->
+
+<h2>Academic Recommendation</h2>
+
+<h3>📚 Study {{hours}} hours per day</h3>
+<p>{{advice}}</p>
+
+<hr>
+
+<!-- 📊 USER INPUT -->
+
+<h3>📈 Your Academic Details</h3>
+<p>Attendance: {{attendance}}%</p>
+<p>CGPA: {{cgpa}}</p>
+<p>GPA: {{gpa}}</p>
+<p>Internal Marks: {{internal}}</p>
+
+<hr>
+
+<!-- 🎯 PLACEMENT -->
+
+<h3>🧠 Aptitude Topics</h3>
+<p>{{aptitude}}</p>
+
+<h3>💻 Technical Topics</h3>
+<p>{{technical}}</p>
+
+<h3>💡 Suggestion</h3>
+<p>{{message}}</p>
+
+<hr>
+
+<!-- 📊 GRAPH BUTTON -->
+
+<h3>📊 Performance Graph</h3>
+
+<button onclick="toggleGraph()" id="graphBtn">
+    Show Graph
+</button>
+
+<div id="graphSection">
+    <img src="{{ url_for('static', filename='graph.png') }}" width="100%">
+</div>
+
+<!-- 🔙 BACK BUTTON -->
+
+<a href="/">⬅ Go Back</a>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+function toggleGraph(){
+    var graph = document.getElementById("graphSection");
+    var btn = document.getElementById("graphBtn");
+
+    if(graph.style.display === "none"){
+        graph.style.display = "block";
+        btn.innerText = "Hide Graph";
+    } else {
+        graph.style.display = "none";
+        btn.innerText = "Show Graph";
+    }
+}
+</script>
+
+</body>
+</html>
